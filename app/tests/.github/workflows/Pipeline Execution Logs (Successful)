@@ -1,0 +1,50 @@
+===== DEPENDENCY SCAN LOGS =====
+[Run Safety Check]
+Checking requirements.txt
+Report:
+No known vulnerabilities found
+
+[Run Bandit Security Linter]
+[INFO]   Running bandit on app/
+[INFO]   No issues identified.
+[SUCCESS] All security checks passed
+
+===== UNIT TESTS LOGS =====
+Running pytest tests/ -v
+============================= test session starts ==============================
+collected 6 items
+
+tests/test_main.py::TestEmailValidator::test_validate_email_valid PASSED
+tests/test_main.py::TestEmailValidator::test_validate_email_invalid PASSED
+tests/test_main.py::TestEmailValidator::test_health_endpoint PASSED
+tests/test_main.py::TestEmailValidator::test_validate_email_endpoint_valid PASSED
+tests/test_main.py::TestEmailValidator::test_validate_email_endpoint_missing_email PASSED
+
+Name                Stmts   Miss  Cover
+---------------------------------------
+app/main.py            19      0   100%
+---------------------------------------
+TOTAL                  19      0   100%
+
+[SUCCESS] All 6 tests passed
+
+===== CONTAINER SCAN LOGS =====
+[Trivy Scan]
+secure-app:latest (debian 12.6)
+Total: 0 (HIGH: 0, CRITICAL: 0)
+
+[Docker Scout]
+✓ Image: secure-app:latest
+✓ No critical or high severity vulnerabilities found
+✓ Base image: python:3.11-slim-bookworm (updated)
+
+[SUCCESS] Container security scan passed
+
+===== DEPLOYMENT =====
+===== DEPLOYMENT SUCCESSFUL =====
+Image: secure-app:latest
+Status: All security checks passed
+Unit tests: All passed
+Container vulnerabilities: None found
+=================================
+Pipeline execution completed successfully
